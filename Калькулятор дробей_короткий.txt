@@ -1,0 +1,4 @@
+from fractions import Fraction
+a = Fraction(input())
+b = Fraction(input())
+print(f"{a + b}")

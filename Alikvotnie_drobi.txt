@@ -1,0 +1,40 @@
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main() {
+  ofstream MyFile("file.txt");
+  int n;
+  int a, b, c, res_a, res_b, res_c;
+  list<int> list_res_a;
+  list<int> list_res_b;
+  list<int> list_res_c;
+  a = 1;
+  b = 1;
+  c = 1;
+  res_a = 0;
+  res_b = 0;
+  res_c = 0;
+
+  for (n = 1; n <= 1000; n++) {
+    for (a = 1; a <= 1000; a++) {
+      for (b = 1; b <= a; b++) {
+        for (c = 1; c <= b; c++) {
+          if (n * (c * b + c * a + a * b) == 4 * a * b * c) {
+            res_a = a;
+            res_b = b;
+            res_c = c;
+            int max_drob = max(max(res_a, res_b), res_c);
+            // cout << "При n = " << n << "    " << max_drob << endl;
+            MyFile << 4 << "/" << n << " = "
+                   << "1/" << res_a << " +"
+                   << " 1/" << res_b << " +"
+                   << " 1/" << res_c << endl;
+          }
+        }
+      }
+    }
+  }
+}
